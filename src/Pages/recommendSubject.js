@@ -27,10 +27,13 @@ const RecommendSubject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/recommendSubject`, {
-      key: selectedSubjects,
-      year: year,
-    });
+    const result = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/recommendSubject`,
+      {
+        key: selectedSubjects,
+        year: year,
+      }
+    );
     setSubjects(result.data);
     console.log("โชว์ดาต้าrecommendSubject", result.data);
     setShowSubjects(true); // show the subjects list
@@ -38,9 +41,12 @@ const RecommendSubject = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/keysubject`, {
-        year: year,
-      });
+      const result = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/keysubject`,
+        {
+          year: year,
+        }
+      );
       setKeys(result.data);
       console.log("โชว์ดาต้าkeysubject", result.data);
     };
@@ -50,7 +56,7 @@ const RecommendSubject = () => {
   return (
     <>
       {showSubjects ? (
-        <RecommendedSubjectsList subjects={subjects} year={year}/>
+        <RecommendedSubjectsList subjects={subjects} year={year} />
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col h-full pb-20 2xl:min-h-screen">
@@ -95,7 +101,7 @@ const RecommendSubject = () => {
                         <input
                           id="checkbox"
                           type="checkbox"
-                          className="absolute peer  w-full h-full opacity-0 accent-blue-300 focus:accent-blue-500 rounded-full"
+                          className="absolute peer w-full h-full opacity-0 accent-blue-300 focus:accent-blue-500 rounded-full"
                           value={subject}
                           checked={selectedSubjects.includes(subject)}
                           onChange={handleCheckboxChange}

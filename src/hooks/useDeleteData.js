@@ -9,7 +9,7 @@ const useDeleteData = () => {
   const { id } = useParams();
 
   const deleteData = async (deleteId) => {
-    console.log(deleteId);
+    //console.log(deleteId);
     await axios.put(
       `${process.env.REACT_APP_BACKEND_URL}/editFileContent/` + id,
       {
