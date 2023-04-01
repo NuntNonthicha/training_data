@@ -21,12 +21,6 @@ const HomePage = () => {
                 กรอกข้อมูลอาชีพบัณฑิต
               </button>
             </a>
-            {/* <p className="flex text-[#999999] hover:text-[#FF9D2E] text-text-xs md:text-sm underline">
-              <a href="https://forms.gle/kLbHKC6yuH2eZVvF9" target="_blank">
-                สำหรับผู้ที่ลืมรหัสผ่าน
-              </a>
-            </p> */}
-            <h1>nunt test4</h1>
           </div>
         </div>
 
