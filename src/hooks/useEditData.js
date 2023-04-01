@@ -4,15 +4,13 @@ import { useParams } from "react-router-dom";
 import { DataEditContext } from "../Contexts/DataEditContext";
 
 const useEditData = () => {
-  const { id } = useParams();
-  const { selectedEditRow, setSelectedEditRow, data, fetchData } =
-    useContext(DataEditContext);
+  const { selectedEditRow, setSelectedEditRow, data, fetchData } = useContext(DataEditContext);
   const [changedData, setChangedData] = useState();
+  const { id } = useParams();
 
   useEffect(() => {
     setChangedData(selectedEditRow);
   }, [selectedEditRow]);
-
   const onChange = (event) => {
     setChangedData((old) => ({
       ...old,

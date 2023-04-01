@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { DataGrid, GridCellModes, useGridApiRef } from "@mui/x-data-grid";
-import EditButton from "./EditButton";
 import DeleteButton from "./DeleteButton";
 import useDeleteData from "../../hooks/useDeleteData";
 import useEditData from "../../hooks/useEditData";
@@ -26,36 +25,50 @@ const DataTable = () => {
           {
             field: "id",
             headerName: "Index",
-            width: 80,
+            width: 150,
             renderCell: (params) => params.row.index + 1,
           },
           ...Object.keys(data[0]).map((key) => ({
             field: key,
             headerName: key,
-            width: 170,
+            width: 150,
           })),
           {
             field: "Action",
-            width: 100,
+            width: 150,
             headerName: "Action",
             editable: true,
             renderCell: (params) => {
               return (
                 <div className="flex flex-row space-x-4 items-center">
                   <DeleteButton onDelete={() => deleteData(params.row.index)} />
-                  <EditButton onClick={() => selectEditRow(params.row)} />
-                  {/* <div
+                  <div
                     onClick={() => selectEditRow(params.row)}
                     className="flex flex-row space-x-4 items-center"
                   >
+                    {/* <EditButton onAdd={() => handleEditCellChange()} /> */}
+                    แก้
+                    {/* <EditButton onClick={() => handleAdd(params.row)}>
                     edit
-                  </div> */}
+                  </EditButton> */}
+                  </div>
                 </div>
               );
             },
           },
         ]
       : [];
+
+  const [selectedRow, setSelectedRow] = useState(null);
+
+  const handleRowClick = (params) => {
+    setSelectedRow(params.id);
+  };
+
+  const handleEdit = (params) => {
+    // handle the row edit here
+    setSelectedRow(null);
+  };
 
   return (
     <div className="w-full h-[450px] xl:h-[600px] py-8">
@@ -67,10 +80,11 @@ const DataTable = () => {
         autoHeight={false}
         rowHeight={60}
         pageSize={10}
+        // checkboxSelection
       />
-      {/* <button onClick={() => console.log(apiRef.current.getSelectedRows())}>
+      <button onClick={() => console.log(apiRef.current.getSelectedRows())}>
         click test{" "}
-      </button> */}
+      </button>
     </div>
   );
 };

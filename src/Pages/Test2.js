@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-//table mui -> edit table
 const rows = [
   { id: 1, name: "John Doe", age: 35, email: "johndoe@example.com" },
   { id: 2, name: "Jane Doe", age: 30, email: "janedoe@example.com" },
